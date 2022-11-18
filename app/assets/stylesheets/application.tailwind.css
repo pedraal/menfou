@@ -8,3 +8,17 @@
   font-family: 'Sono', sans-serif;
   @apply dark:text-white;
 }
+
+@layer components {
+  .btn-base {
+    @apply cursor-pointer rounded-lg py-3 px-5 font-medium;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-blue-600 text-white;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-gray-100 text-black;
+  }
+}

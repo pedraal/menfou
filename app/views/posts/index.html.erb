@@ -5,9 +5,7 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">TrucsFeed</h1>
-    <%= render Ui::ButtonLinkComponent.new('Écris un truc', new_post_path) do |b| %>
-      <%- b.icon { '🖊️' } %>
-    <% end %>
+    <%= link_to '🖊️ Écris un truc', new_post_path, class: 'btn-primary' %>
   </div>
 
   <%= turbo_stream_from "posts"%>
