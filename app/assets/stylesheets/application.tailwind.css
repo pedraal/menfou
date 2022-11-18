@@ -2,12 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap');
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+* {
+  font-family: 'Sono', sans-serif;
+  @apply dark:text-white;
 }
-
-*/
