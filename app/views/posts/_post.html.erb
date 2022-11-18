@@ -1,17 +1,13 @@
-<div id="<%= dom_id post %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Body:</strong>
+<%= link_to post, id: dom_id(post), class: "block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all #{'hover:bg-gray-100/5' if action_name != 'show'}" do %>
+  <div class="flex items-center justify-between">
+    <span>@<%= post.author %></span>
+    <span class="text-gray-500">
+      <%= post.relative_created_at %>
+    </span>
+  </div>
+  <p class="mt-5">
     <%= post.body %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Author:</strong>
-    <%= post.author %>
-  </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this post', edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<% end %>
