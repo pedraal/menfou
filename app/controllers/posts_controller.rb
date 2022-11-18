@@ -13,6 +13,11 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /posts/1/edit
@@ -26,8 +31,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Truc posté !" }
+        format.turbo_stream { render turbo_stream: turbo_stream.remove("new-post-modal") }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity }
       end
     end
   end

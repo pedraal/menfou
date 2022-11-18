@@ -1,27 +1,23 @@
 <%= form_with(model: post, class: "contents") do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="my-5">
     <%= form.label 'PTDR t ki?' %>
     <%= form.text_field :author, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:bg-slate-800" %>
+    <%- if post.errors[:author].any? %>
+      <% post.errors[:author].each do |error| %>
+        <p class="text-red-500 text-sm mt-1"><%= error %></p>
+      <% end %>
+    <% end %>
   </div>
-
   <div class="my-5">
     <%= form.label 'Le truc' %>
     <%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:bg-slate-800", rows: 3 %>
+    <%- if post.errors[:body].any? %>
+      <% post.errors[:body].each do |error| %>
+        <p class="text-red-500 text-sm mt-1"><%= error %></p>
+      <% end %>
+    <% end %>
   </div>
-
   <div class="inline">
-    <%= form.submit class: "btn-primary", value: form.object.persisted? ? 'Modifier le truc' : 'Créer le truc' %>
+    <%= form.submit class: "btn-primary", value: form.object.persisted? ? 'Modifier ce truc' : 'Créer ce truc' %>
   </div>
 <% end %>

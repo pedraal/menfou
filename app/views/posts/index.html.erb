@@ -2,21 +2,19 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">TrucsFeed</h1>
-    <%= link_to '🖊️ Écris un truc', new_post_path, class: 'btn-primary' %>
+    <%= link_to '🖊️ Écris un truc', nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
   </div>
-
   <%= turbo_stream_from "posts"%>
-
   <div id="posts" class="min-w-full py-6">
     <%= turbo_frame_tag "posts" do %>
       <%- if @posts.any? %>
-          <%= render @posts %>
+        <%= render @posts %>
       <%- else %>
-          <% render 'placeholder' %>
+        <% render 'placeholder' %>
       <% end %>
     <% end %>
   </div>
+  <%= turbo_frame_tag "modal" %>
 </div>
