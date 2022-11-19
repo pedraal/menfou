@@ -15,5 +15,12 @@
     <main class="container mx-auto mt-12 px-5 flex">
       <%= yield %>
     </main>
+    <%= render Ui::Flash::WrapperComponent.new do |w| %>
+      <%- w.body do %>
+        <%- if notice.present? %>
+          <%= render Ui::Flash::NoticeComponent.new(notice) %>
+        <% end %>
+      <% end %>
+    <% end %>
   </body>
 </html>
