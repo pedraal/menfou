@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
 
   def current_user
-    @current_user ||= User.find_by(auth0_id: @auth_info['sub'])
+    @current_user ||= User.find_by(auth0_id: @auth_info && @auth_info['sub'])
   end
   helper_method :current_user
 

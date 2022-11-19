@@ -1,5 +1,12 @@
 <%= turbo_frame_tag dom_id(post) do %>
-  <%= link_to post, class: "block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 #{'hover:bg-gray-100/5' if action_name != 'show'}", data: { turbo: false } do %>
+  <%- can_do_public_actions = (controller_name != 'posts' || (controller_name == 'posts' && action_name != 'show')) %>
+  <div
+    data-controller="post-actions"
+    data-post-actions-edit-url-value="<%= edit_post_path(post) %>"
+    data-post-actions-show-url-value="<%= post_path(post) %>"
+    data-action="<%= 'click->post-actions#show' if can_do_public_actions %>"
+    class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_do_public_actions %>"
+    >
     <div class="flex items-center justify-between">
       <div>
         <%= user_avatar_tag(post.user) %>
@@ -8,18 +15,28 @@
       <div class="flex items-center">
         <span class="text-gray-500">
           <%- if post.created_at < 1.minute.ago %>
-            <%= post.relative_created_at %>
+            <%= relative_post_timestamp(post) %>
           <%- else %>
             à l'instant
           <% end %>
         </span>
-        <div data-controller="post-actions" class="relative z-10 pl-2" data-post-actions-edit-url-value="<%= edit_post_path(post) %>">
-          <span data-action="click->post-actions#edit:prevent" class="cursor-pointer block">🖊️</span>
-        </div>
+        <%- if post.user == current_user && can_do_public_actions %>
+          <%= render Ui::MenuComponent.new do |m| %>
+            <%- m.toggler do %>
+              <div class="rotate-90 scale-[.6]">&bull;&bull;&bull;</div>
+            <% end %>
+            <%- m.body do %>
+              <div class="flex flex-col gap-4">
+                <span class="text-sm text-black" data-action="click->post-actions#edit"><%= t('posts.actions.edit') %></span>
+                <span class="text-sm text-black" data-action="click->post-actions#destroy"><%= t('posts.actions.destroy') %></span>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <p class="mt-5">
       <%= post.body %>
     </p>
-  <% end %>
+  </div>
 <% end %>

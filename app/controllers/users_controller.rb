@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: %i[ edit update destroy ]
   before_action :redirect_if_exists, only: %i[ new create ]
+  before_action :authorize, only: %i[ edit update destroy ]
 
   # GET /users/1
   def show
@@ -68,5 +69,11 @@ class UsersController < ApplicationController
 
     def redirect_if_exists
       redirect_to user_url(current_user) if current_user
+    end
+
+    def authorize
+      return if @user == current_user
+
+      redirect_back fallback_location: root_path
     end
 end

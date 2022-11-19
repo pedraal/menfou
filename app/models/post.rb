@@ -22,20 +22,29 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  after_create_commit { broadcast_prepend_to "posts" }
-  after_update_commit { broadcast_replace_to "posts" }
-  after_destroy_commit { broadcast_remove_to "posts" }
+  after_create_commit { broadcast_prepend }
+  after_update_commit { broadcast_replace }
+  after_destroy_commit { broadcast_destroy }
 
-  def relative_created_at
-    created_at_from_now = Time.current - created_at
-    if created_at_from_now < 1.minute
-      "#{(created_at_from_now / 1.second).to_i}sec."
-    elsif created_at_from_now < 1.hour
-      "#{(created_at_from_now / 1.minute).to_i}min."
-    elsif created_at_from_now < 1.day
-      "#{(created_at_from_now / 1.hour).to_i}h."
-    else
-      "#{(created_at_from_now / 1.day).to_i}j."
+  def broadcast_prepend
+    broadcastables.each do |broadcastable|
+      broadcast_prepend_to broadcastable
     end
+  end
+
+  def broadcast_replace
+    broadcastables.each do |broadcastable|
+      broadcast_replace_to broadcastable
+    end
+  end
+
+  def broadcast_destroy
+    broadcastables.each do |broadcastable|
+      broadcast_remove_to broadcastable
+    end
+  end
+
+  def broadcastables
+    ['posts', "#{ActionView::RecordIdentifier.dom_id(user)}-posts"]
   end
 end

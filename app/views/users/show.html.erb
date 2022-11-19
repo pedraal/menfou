@@ -6,15 +6,16 @@
     </div>
   <% end %>
   <%= render @user %>
-  <%- if @user.posts.any? %>
-    <div class="flex justify-between items-center">
-      <h3 class="font-bold text-4xl"><%= t(".posts.#{ current_user == @user ? 'mine' : 'others' }", handle: @user.handle) %></h1>
-      <%= link_to t('.new_post'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
-    </div>
-    <div class="min-w-full py-6">
-      <%- @user.posts.each do |post| %>
+  <%= turbo_stream_from "#{dom_id(@user)}-posts" %>
+  <div class="flex justify-between items-center">
+    <h3 class="font-bold text-4xl"><%= t(".posts.#{ current_user == @user ? 'mine' : 'others' }", handle: @user.handle) %></h1>
+    <%= link_to t('.new_post'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
+  </div>
+  <div class="min-w-full py-6">
+    <%= turbo_frame_tag "posts" do %>
+      <%- @user.posts.order(id: :desc).each do |post| %>
         <%= render post %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

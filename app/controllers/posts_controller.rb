@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   include Secured
 
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :authorize, only: %i[ edit update destroy ]
 
   # GET /posts
   def index
@@ -55,6 +56,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to posts_url, notice: t('.success') }
+      format.turbo_stream
     end
   end
 
@@ -67,5 +69,11 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:body)
+    end
+
+    def authorize
+      return if @post.user == current_user
+
+      redirect_back fallback_location: root_path
     end
 end

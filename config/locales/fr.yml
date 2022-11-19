@@ -46,25 +46,27 @@ fr:
       leave_us: Retournes voir des trucs intéressants
 
   posts:
-    return: Retourner aux trucs
     index:
       title: TrucsFeed
       new: 🖊️ Écris un truc
     show:
-      edit: Modifier ce truc
-      delete: Supprimer ce truc
+      edit: 🖊️
+      delete: 🗑️
     new:
       title: Nouveau truc
     edit:
       title: Modifier ce truc
-      show: Voir ce truc
-      delete: Supprimer ce truc
+      show: ❌
+      delete: 🗑️
     create:
       success: Truc posté !
     update:
       success: Truc modifié !
     destroy:
       success: Truc supprimé !
+    actions:
+      edit: Modifier ce truc
+      destroy: Supprimer ce truc
 
   users:
     show:
