@@ -1,0 +1,8 @@
+<%= turbo_stream.append "modal" do %>
+  <%= render Ui::ModalComponent.new(id: 'edit-post-modal') do |modal| %>
+    <%- modal.body do %>
+      <%= content_tag('h3', 'Modifier le truc', class: 'text-xl')%>
+      <%= render 'form', post: @post %>
+    <% end %>
+  <% end %>
+<% end %>

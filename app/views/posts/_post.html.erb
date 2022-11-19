@@ -10,6 +10,9 @@
             à l'instant
           <% end %>
         </span>
+        <div data-controller="post-actions" class="relative z-10 pl-2" data-post-actions-edit-url-value="<%= edit_post_path(post) %>">
+          <span data-action="click->post-actions#edit:prevent" class="cursor-pointer block">🖊️</span>
+        </div>
       </div>
     </div>
     <p class="mt-5">
