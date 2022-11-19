@@ -76,3 +76,6 @@ end
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "view_component"
+
+gem 'omniauth-auth0', '~> 3.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'

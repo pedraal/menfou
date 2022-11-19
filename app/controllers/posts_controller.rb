@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  include Secured
+
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts
