@@ -4,8 +4,8 @@
   <% end %>
   <%= render @post %>
   <div class="mt-2">
-    <%= link_to 'Modifier ce truc', edit_post_path(@post), class: "btn-secondary inline-block" %>
-    <%= link_to 'Supprimer ce truc', post_path(@post), class: "btn-secondary inline-block ml-2", data: { 'turbo-method': :delete } %>
-    <%= link_to 'Retourner aux trucs', posts_path, class: "btn-secondary inline-block ml-2" %>
+    <%= link_to t('.edit'), edit_post_path(@post), class: "btn-secondary inline-block" %>
+    <%= link_to t('.delete'), post_path(@post), class: "btn-secondary inline-block ml-2", data: { 'turbo-method': :delete } %>
+    <%= link_to t('posts.return'), posts_path, class: "btn-secondary inline-block ml-2" %>
   </div>
 </div>

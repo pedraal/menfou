@@ -1,8 +1,6 @@
 <div class="md:w-3/4 w-full">
-  <h1 class="font-bold text-4xl">Modifier ce truc</h1>
-
+  <h1 class="font-bold text-4xl"><%= t('.title')%></h1>
   <%= render "form", post: @post %>
-
-  <%= link_to "Voir ce truc", @post, class: "btn-secondary inline-block" %>
-  <%= link_to "Retourner aux trucs", posts_path, class: "btn-secondary inline-block" %>
+  <%= link_to t('.show'), @post, class: "btn-secondary inline-block" %>
+  <%= link_to t('posts.return'), posts_path, class: "btn-secondary inline-block" %>
 </div>

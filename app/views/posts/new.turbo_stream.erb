@@ -1,7 +1,7 @@
 <%= turbo_stream.append "modal" do %>
   <%= render Ui::ModalComponent.new(id: 'new-post-modal') do |modal| %>
     <%- modal.body do %>
-      <%= content_tag('h3', 'Nouveau truc', class: 'text-xl')%>
+      <%= content_tag('h3', t('.title'), class: 'text-xl')%>
       <%= render 'form', post: @post %>
     <% end %>
   <% end %>

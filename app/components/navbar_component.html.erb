@@ -1,7 +1,7 @@
 <div class="flex justify-end container mx-auto py-2" data-turbo="false">
   <%- if helpers.user_signed_in? %>
-    <%= button_to "Se déconnecter", 'auth/logout', class: 'btn-secondary', method: :get %>
+    <%= button_to t('auth.actions.logout'), 'auth/logout', class: 'btn-secondary', method: :get %>
   <%- else %>
-    <%= button_to 'Se connecter', '/auth/auth0', class: 'btn-primary', method: :post %>
+    <%= button_to t('auth.actions.login'), '/auth/auth0', class: 'btn-primary', method: :post %>
   <% end %>
 </div>

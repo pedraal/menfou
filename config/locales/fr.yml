@@ -1,0 +1,41 @@
+fr:
+  app:
+    title: Menfou 🤷
+    catchline: Réseau social de type osef-tier
+    caption: Exprimes des trucs qui n'intéressent personne, on ne manquera pas de te le dire. Comme un vrai réseau quoi.
+
+  activerecord:
+    models:
+      post: Truc
+    attributes:
+      post:
+        author: Auteur
+        body: Corps
+  helpers:
+    label:
+      post:
+        author: PTDR t ki
+        body: Raconte un truc osef
+    submit:
+      post:
+        create: Envoyer ce truc
+        update: Modifier ce truc
+
+  auth:
+    actions:
+      login: Se connecter
+      logout: Se déconnecter
+
+  posts:
+    return: Retourner aux trucs
+    index:
+      title: TrucsFeed
+      new: 🖊️ Écris un truc
+    show:
+      edit: Modifier ce truc
+      delete: Supprimer ce truc
+    new:
+      title: Nouveau truc
+    edit:
+      title: Modifier ce truc
+      show: Voir ce truc

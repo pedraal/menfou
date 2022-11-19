@@ -1,0 +1,7 @@
+<%= @form.label @field_name %>
+<%= input %>
+<%- if @object.errors[@field_name].any? %>
+  <% @object.errors[@field_name].each do |error| %>
+    <p class="text-red-500 text-sm mt-1"><%= error %></p>
+  <% end %>
+<% end %>
