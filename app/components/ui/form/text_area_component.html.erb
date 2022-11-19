@@ -1,5 +1,5 @@
 <%= render Ui::Form::InputWrapperComponent.new(@form, @field_name) do |i| %>
   <%- i.input do %>
-    <%= @form.text_area @field_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:bg-slate-800", rows: 3 %>
+    <%= @form.text_area @field_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:bg-slate-800", rows: 3, **@options %>
   <% end %>
 <% end %>

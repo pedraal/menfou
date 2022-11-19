@@ -58,6 +58,7 @@ fr:
     edit:
       title: Modifier ce truc
       show: Voir ce truc
+      delete: Supprimer ce truc
     create:
       success: Truc posté !
     update:

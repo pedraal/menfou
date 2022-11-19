@@ -1,9 +1,6 @@
 <%= form_with(model: post, class: "contents") do |form| %>
   <div class="my-5">
-    <%= render Ui::Form::TextFieldComponent.new(form, :author) %>
-  </div>
-  <div class="my-5">
-    <%= render Ui::Form::TextAreaComponent.new(form, :body) %>
+    <%= render Ui::Form::TextAreaComponent.new(form, :body, autofocus: true) %>
   </div>
   <div class="inline">
     <%= form.submit class: "btn-primary" %>

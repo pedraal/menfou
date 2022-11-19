@@ -3,6 +3,7 @@
     <%- modal.body do %>
       <%= content_tag('h3', t('.title'), class: 'text-xl')%>
       <%= render 'form', post: @post %>
+      <%= link_to t('.delete'), post_path(@post), class: "btn-secondary inline-block ml-2", data: { 'turbo-method': :delete } %>
     <% end %>
   <% end %>
 <% end %>

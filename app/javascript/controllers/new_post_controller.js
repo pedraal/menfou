@@ -8,6 +8,10 @@ export default class extends Controller {
     event.preventDefault()
     get(this.urlValue, {
       responseKind: 'turbo-stream'
+    }).then(() => {
+      setTimeout(() => {
+        document.querySelector('#new-post-modal textarea').focus()
+      }, 50);
     })
   }
 }
