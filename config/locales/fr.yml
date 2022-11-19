@@ -1,12 +1,17 @@
 fr:
-  app:
+  navbar:
     title: Menfou 🤷
     catchline: Réseau social de type osef-tier
-    caption: Exprimes des trucs qui n'intéressent personne, on ne manquera pas de te le dire. Comme un vrai réseau quoi.
+
+    actions:
+      login: Se connecter
+      logout: Se déconnecter
 
   activerecord:
     models:
-      post: Truc
+      post:
+        one: Truc
+        other: Trucs
     attributes:
       post:
         author: Auteur
@@ -21,16 +26,19 @@ fr:
         create: Envoyer ce truc
         update: Modifier ce truc
 
-  auth:
-    actions:
-      login: Se connecter
-      logout: Se déconnecter
-
   auth0:
     callback:
       success: Tu es maintenant connecté(e)
     logout:
       success: Tu es maintenant déconnecté(e)
+
+  home:
+    index:
+      welcome: Bienvenue sur Menfou&nbsp;!
+      caption: Exprimes des trucs qui n'intéressent personne, on ne manquera pas de te le dire.<br> Comme un vrai réseau quoi.
+      count: Il y a  actuellement %{count} dont personne n'a rien à cirer.
+      join_us: Rejoins-nous, mais en vrai on s'en fout.
+      leave_us: Retournes voir des trucs intéressants
 
   posts:
     return: Retourner aux trucs

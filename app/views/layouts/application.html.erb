@@ -11,8 +11,7 @@
   </head>
   <body class="dark:bg-slate-900">
     <%= render NavbarComponent.new %>
-    <%= render HeaderComponent.new %>
-    <main class="container mx-auto mt-12 px-5 flex">
+    <main class="container mx-auto mt-12 px-5">
       <%= yield %>
     </main>
     <%= render Ui::Flash::WrapperComponent.new do |w| %>

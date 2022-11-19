@@ -1,0 +1,20 @@
+<section class="mx-auto mt-24" data-turbo="false">
+  <div class="text-center w-full">
+    <h1 class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+      <%== t('.welcome') %>
+    </h1>
+    <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
+      <%== t('.caption') %>
+    </p>
+    <p class="mx-auto mt-4 max-w-xl sm:text-xl sm:leading-relaxed">
+      <%= t('.count', count: "#{@posts_count} #{Post.model_name.human(count: @posts_count)}".downcase) %>
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <%= button_to t('.join_us'), '/auth/auth0', class: 'btn-primary', method: :post %>
+      <br>
+      <a class="btn-secondary" href="https://fr.wikipedia.org">
+        <%= t('.leave_us') %>
+      </a>
+    </div>
+  </div>
+</section>
