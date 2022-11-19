@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  auth0_data :json
+#  handle     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  auth0_id   :string
+#
+
+one:
+  auth0_id: UserOne
+  auth0_data: { nickname: UserOne, sub: UserOne }
+  handle: UserOne
+
+two:
+  auth0_id: UserTwo
+  auth0_data: { nickname: UserTwo, sub: UserTwo }
+  handle: UserTwo

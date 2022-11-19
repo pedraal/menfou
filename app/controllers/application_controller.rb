@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
-  before_action :load_user
+  before_action :load_auth_info
 
   def user_signed_in?
-    @user.presence
+    @auth_info.presence
   end
-  alias_method :current_user, :user_signed_in?
   helper_method :user_signed_in?
+
+  def current_user
+    @current_user ||= User.find_by(auth0_id: @auth_info['sub'])
+  end
   helper_method :current_user
 
   private
 
-  def load_user
+  def load_auth_info
     # session[:userinfo] was saved earlier on Auth0Controller#callback
-    @user = session[:userinfo]
+    @auth_info = session[:userinfo]
   end
 end

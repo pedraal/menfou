@@ -1,0 +1,8 @@
+<%= form_with(model: user, class: "contents") do |form| %>
+  <div class="my-5">
+    <%= render Ui::Form::TextFieldComponent.new(form, :handle) %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

@@ -16,6 +16,8 @@ fr:
       post:
         author: Auteur
         body: Corps
+      user:
+        handle: Comment on doit t'appeller ?
   helpers:
     label:
       post:
@@ -25,6 +27,9 @@ fr:
       post:
         create: Envoyer ce truc
         update: Modifier ce truc
+      user:
+        create: Enregistrer
+        update: Enregistrer
 
   auth0:
     callback:
@@ -59,3 +64,19 @@ fr:
       success: Truc modifié !
     destroy:
       success: Truc supprimé !
+
+  users:
+    show:
+      edit: Modifier mon compte
+      delete: Supprimer mon compte
+    new:
+      title: La bienvenue à toi jeune menfoutiste
+    edit:
+      title: Modifier mon compte
+      show: Annuler
+    create:
+      success: Compte créé !
+    update:
+      success: Compte mis à jour !
+    destroy:
+      success: Compte supprimé !

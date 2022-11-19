@@ -6,8 +6,14 @@ class Auth0Controller < ApplicationController
     auth_info = request.env['omniauth.auth']
     session[:userinfo] = auth_info['extra']['raw_info']
 
+    @user = User.find_by(auth0_id: session[:userinfo]['sub'])
+
     # Redirect to the URL you want after successful auth
-    redirect_to '/dashboard', notice: t('.success')
+    if @user
+      redirect_to posts_url, notice: t('.success')
+    else
+      redirect_to new_user_url, notice: t('.success')
+    end
   end
 
   def failure

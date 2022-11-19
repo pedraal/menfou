@@ -6,6 +6,6 @@ module Secured
   end
 
   def logged_in_using_omniauth?
-    redirect_to '/home' unless user_signed_in?
+    redirect_to root_url unless user_signed_in?
   end
 end
