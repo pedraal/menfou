@@ -39,3 +39,9 @@ fr:
     edit:
       title: Modifier ce truc
       show: Voir ce truc
+    create:
+      success: Truc posté !
+    update:
+      success: Truc modifié !
+    destroy:
+      success: Truc supprimé !
