@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   include Secured
 
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ edit update destroy ]
   before_action :redirect_if_exists, only: %i[ new create ]
 
   # GET /users/1
   def show
+    @user = User.includes(:posts).find(params[:id])
   end
 
   # GET /users/new

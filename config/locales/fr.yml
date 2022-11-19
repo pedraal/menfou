@@ -70,6 +70,10 @@ fr:
     show:
       edit: Modifier mon compte
       delete: Supprimer mon compte
+      posts:
+        mine: Mes trucs
+        others: Trucs de %{handle}
+      new_post: 🖊️ Écris un truc
     new:
       title: La bienvenue à toi jeune menfoutiste
     edit:

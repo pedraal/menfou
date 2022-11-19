@@ -1,11 +1,20 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <%= render @user %>
-    <%- if @user == current_user %>
-      <%= link_to t('.edit'), edit_user_path(@user), class: "btn-secondary" %>
-      <div class="inline-block ml-2">
-        <%= button_to t('.delete'), user_path(@user), method: :delete, class: "btn-secondary" %>
-      </div>
-    <% end %>
-  </div>
+<div class="w-full">
+  <%- if @user == current_user %>
+    <%= link_to t('.edit'), edit_user_path(@user), class: "btn-secondary" %>
+    <div class="inline-block ml-2">
+      <%= button_to t('.delete'), user_path(@user), method: :delete, class: "btn-secondary" %>
+    </div>
+  <% end %>
+  <%= render @user %>
+  <%- if @user.posts.any? %>
+    <div class="flex justify-between items-center">
+      <h3 class="font-bold text-4xl"><%= t(".posts.#{ current_user == @user ? 'mine' : 'others' }", handle: @user.handle) %></h1>
+      <%= link_to t('.new_post'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
+    </div>
+    <div class="min-w-full py-6">
+      <%- @user.posts.each do |post| %>
+        <%= render post %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

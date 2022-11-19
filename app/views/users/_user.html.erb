@@ -1,15 +1,9 @@
 <div id="<%= dom_id user %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Auth0:</strong>
-    <%= user.auth0_id %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Auth0 data:</strong>
-    <%= user.auth0_data %>
-  </p>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Handle:</strong>
-    <%= user.handle %>
+    <%= user_avatar_tag(user) %>
+    <span class="text-xl">
+      <%= user.handle %>
+    </span>
   </p>
   <% if action_name != "show" %>
     <%= link_to t('.show'), user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
