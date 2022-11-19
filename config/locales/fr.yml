@@ -2,10 +2,10 @@ fr:
   navbar:
     title: Menfou 🤷
     catchline: Réseau social de type osef-tier
-
     actions:
       login: Se connecter
       logout: Se déconnecter
+      show_profile: Voir mon profil
 
   activerecord:
     models:

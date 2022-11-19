@@ -2,8 +2,8 @@
   <%= link_to post, class: "block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 #{'hover:bg-gray-100/5' if action_name != 'show'}", data: { turbo: false } do %>
     <div class="flex items-center justify-between">
       <div>
-        <img src="<%= post.user.avatar %>" alt="Avatar de <%= post.user.handle %>" class="aspect-square w-8 inline">
-        <span>@<%= post.user.handle %></span>
+        <%= user_avatar_tag(post.user) %>
+        <span><%= user_handle(post.user) %></span>
       </div>
       <div class="flex items-center">
         <span class="text-gray-500">

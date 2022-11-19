@@ -1,10 +1,21 @@
 <nav class="flex justify-between items-center container mx-auto px-5 my-4" data-turbo="false">
-  <div>
+  <%= link_to root_url do %>
     <h1 class="text-2xl lg:text-[40px] font-bold"><%= t('navbar.title') %></h1>
     <h2 class="text-xl lg:text-2xl hidden md:block"><%= t('navbar.catchline') %></h2>
-  </div>
+  <% end %>
   <%- if helpers.user_signed_in? %>
-    <%= button_to t('navbar.actions.logout'), '/auth/logout', class: 'btn-secondary', method: :get %>
+    <div class="flex items-center relative cursor-pointer" data-controller="user-menu" data-action="click->user-menu#toggle">
+      <span class="mr-3">
+        <%= helpers.current_user.handle %>
+      </span>
+      <%= helpers.user_avatar_tag(helpers.current_user)%>
+      <div class="hidden absolute z-50 w-48 top-[110%] right-0 bg-white shadow-lg p-4 rounded-lg" data-user-menu-target="menu">
+        <div class="flex flex-col gap-4">
+          <%= link_to t('navbar.actions.show_profile'), helpers.user_url(helpers.current_user), method: :get, class: 'dark:text-black text-sm' %>
+          <%= link_to t('navbar.actions.logout'), '/auth/logout', method: :get, class: 'dark:text-black text-sm' %>
+        </div>
+      </div>
+    </div>
   <%- else %>
     <%= button_to t('navbar.actions.login'), '/auth/auth0', class: 'btn-primary', method: :post %>
   <% end %>
