@@ -26,6 +26,12 @@ fr:
       login: Se connecter
       logout: Se déconnecter
 
+  auth0:
+    callback:
+      success: Tu es maintenant connecté(e)
+    logout:
+      success: Tu es maintenant déconnecté(e)
+
   posts:
     return: Retourner aux trucs
     index:
