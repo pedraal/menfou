@@ -19,7 +19,6 @@ class User < ApplicationRecord
   has_many :inverse_follows, foreign_key: :followee_id, class_name: 'Follow', dependent: :destroy
   has_many :followers, through: :inverse_follows, source: :follower
 
-
   before_save :set_fuzzy_handle
 
   def set_fuzzy_handle

@@ -20,7 +20,6 @@ fr:
   helpers:
     label:
       post:
-        author: PTDR t ki
         body: Raconte un truc osef
     submit:
       post:
@@ -40,15 +39,18 @@ fr:
     index:
       welcome: Bienvenue sur Menfou&nbsp;!
       catchline: Réseau social de type osef-tier
-      caption: Exprimes des trucs qui n'intéressent personne.<br> Comme un vrai réseau quoi.
+      caption: Exprime des trucs qui n'intéressent personne.<br> Comme un vrai réseau quoi.
       count: Il y a  actuellement %{count} postés dont personne n'a rien à cirer.
       join_us: Rejoins-nous, mais en vrai on s'en fout.
-      leave_us: Retournes voir des trucs intéressants
+      leave_us: Retourne voir des trucs intéressants
 
   posts:
     index:
       title: TrucsFeed
       new: 🖊️
+      placeholder:
+        title: Rien à battre 🙄
+        caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <b>@pedraal</b>, notre CEO, mais en vrai on s'en fout pas mal.
     show:
       edit: 🖊️
       delete: 🗑️
