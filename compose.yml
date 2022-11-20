@@ -16,11 +16,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.services.menfou-service.loadbalancer.server.port=3000
-      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie=true
-      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.name=io
-      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.httponly=true
-      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.secure=true
-      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.samesite=io
       - traefik.http.routers.menfou.rule=Host(`menfou.pedraal.fr`)
       - traefik.http.routers.menfou.entrypoints=web
       - traefik.http.routers.menfou-secured.tls=true
