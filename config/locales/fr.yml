@@ -56,7 +56,7 @@ fr:
       title: Nouveau truc
     edit:
       title: Modifier ce truc
-      show: ❌
+      show: <span class="emoji-black">❌</span>
       delete: 🗑️
     create:
       success: Truc posté !
@@ -86,7 +86,7 @@ fr:
       title: La bienvenue à toi jeune menfoutiste
     edit:
       title: Modifier mon compte
-      show: ❌
+      show: <span class="emoji-black">❌</span>
       delete: 🗑️
     create:
       success: Compte créé !
