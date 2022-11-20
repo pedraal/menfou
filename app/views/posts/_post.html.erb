@@ -4,11 +4,12 @@
     data-controller="post-actions"
     data-post-actions-edit-url-value="<%= edit_post_path(post) %>"
     data-post-actions-show-url-value="<%= post_path(post) %>"
+    data-post-actions-show-user-url-value="<%= user_path(post.user) %>"
     data-action="<%= 'click->post-actions#show' if can_do_public_actions %>"
     class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_do_public_actions %>"
     >
     <div class="flex items-center justify-between">
-      <div>
+      <div data-action="click->post-actions#showUser:stop">
         <%= user_avatar_tag(post.user) %>
         <span><%= user_handle(post.user) %></span>
       </div>
