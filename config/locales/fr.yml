@@ -40,8 +40,8 @@ fr:
     index:
       welcome: Bienvenue sur Menfou&nbsp;!
       catchline: Réseau social de type osef-tier
-      caption: Exprimes des trucs qui n'intéressent personne, on ne manquera pas de te le dire.<br> Comme un vrai réseau quoi.
-      count: Il y a  actuellement %{count} dont personne n'a rien à cirer.
+      caption: Exprimes des trucs qui n'intéressent personne.<br> Comme un vrai réseau quoi.
+      count: Il y a  actuellement %{count} postés dont personne n'a rien à cirer.
       join_us: Rejoins-nous, mais en vrai on s'en fout.
       leave_us: Retournes voir des trucs intéressants
 
