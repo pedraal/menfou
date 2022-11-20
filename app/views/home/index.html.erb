@@ -1,6 +1,6 @@
 <section class="mx-auto mt-24" data-turbo="false">
   <div class="text-center w-full">
-    <h1 class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+    <h1 class="title-gradient text-3xl font-extrabold text-transparent sm:text-5xl">
       <%== t('.welcome') %>
     </h1>
     <h2 class="mx-auto mt-4 text-xl lg:text-2xl max-w-xl hidden md:block"><%= t('.catchline') %></h2>
@@ -15,7 +15,7 @@
       </a>
     </div>
     <p class="mx-auto mt-8 max-w-xl sm:text-xl sm:leading-relaxed">
-      <%= t('.count', count: "#{@posts_count} #{Post.model_name.human(count: @posts_count)}".downcase) %>
+      <%== t('.count', count: "#{@posts_count} #{Post.model_name.human(count: @posts_count)}".downcase) %>
     </p>
   </div>
 </section>

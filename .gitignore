@@ -38,3 +38,5 @@
 !/app/assets/builds/.keep
 config/auth0.yml
 config/secrets.yml
+
+.DS_Store

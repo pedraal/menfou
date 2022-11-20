@@ -9,13 +9,23 @@
   @apply dark:text-white;
 }
 
+input, textarea, select {
+  @apply dark:text-white focus:ring-1 focus:ring-primary focus:border-primary;
+}
+
+@layer utilities {
+  .title-gradient {
+    @apply bg-gradient-to-r from-green-300 to-primary bg-clip-text text-transparent;
+  }
+}
+
 @layer components {
   .btn-base {
     @apply cursor-pointer rounded-lg py-3 px-5 font-medium;
   }
 
   .btn-primary {
-    @apply btn-base bg-blue-600 text-white;
+    @apply btn-base bg-primary text-white;
   }
 
   .btn-secondary {

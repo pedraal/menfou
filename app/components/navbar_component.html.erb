@@ -1,6 +1,6 @@
 <nav class="flex justify-between items-center container mx-auto px-5 my-4" data-turbo="false">
   <%= link_to root_url do %>
-    <h1 class="text-2xl lg:text-[40px] font-bold"><%= t('navbar.title') %></h1>
+    <h1 class="text-2xl lg:text-[40px] font-semibold"><%== t('navbar.title') %></h1>
   <% end %>
   <%- if helpers.user_signed_in? %>
     <%- if helpers.current_user %>
@@ -16,6 +16,7 @@
         <%- m.body do %>
           <div class="flex flex-col gap-4">
             <%= link_to t('navbar.actions.show_profile'), helpers.user_url(helpers.current_user), method: :get, class: 'dark:text-black text-sm' %>
+            <%= link_to t('navbar.actions.settings'), helpers.edit_user_url(helpers.current_user), method: :get, class: 'dark:text-black text-sm' %>
             <%= link_to t('navbar.actions.logout'), '/auth/logout', method: :get, class: 'dark:text-black text-sm' %>
           </div>
         <% end %>

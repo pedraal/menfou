@@ -2,7 +2,7 @@
 
 module UsersHelper
   def user_handle(user)
-    "@#{user.handle}"
+    tag.span('@', class: 'text-primary') + user.handle
   end
 
   def user_avatar(user)
@@ -11,5 +11,9 @@ module UsersHelper
 
   def user_avatar_tag(user)
     tag.img src: user_avatar(user), alt: "Avatar de #{user.handle}", class: 'avatar', class: 'aspect-square w-10 inline'
+  end
+
+  def user_big_avatar_tag(user)
+    tag.img src: user_avatar(user), alt: "Avatar de #{user.handle}", class: 'avatar', class: 'aspect-square w-20 inline'
   end
 end

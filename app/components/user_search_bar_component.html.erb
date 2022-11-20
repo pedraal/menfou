@@ -4,6 +4,6 @@
   data-action="submit->user-search-bar#search:prevent"
   data-user-search-bar-search-url-value="<%= search_users_path %>"
   >
-  <input type="text" class="grow bg-transparent border-transparent focus:border-transparent focus:ring-0" placeholder="Cherche des gens" data-user-search-bar-target="query" value="<%= params[:q] %>">
+  <input type="text" class="grow bg-transparent border-transparent focus:border-transparent focus:ring-transparent" placeholder="Cherche des gens" data-user-search-bar-target="query" value="<%= params[:q] %>" data-action="focus->user-search-bar#focus blur->user-search-bar#blur">
   <span class="m-2 cursor-pointer" data-action="click->user-search-bar#search:prevent">🔎</span>
 </form>

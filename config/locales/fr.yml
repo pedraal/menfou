@@ -1,10 +1,11 @@
 fr:
   navbar:
-    title: Menfou 🤷
+    title: <span class="title-gradient">Menfou</span> 🤷
     actions:
       login: Se connecter
       logout: Se déconnecter
       show_profile: Voir mon profil
+      settings: Mes paramètres
 
   activerecord:
     models:
@@ -40,7 +41,7 @@ fr:
       welcome: Bienvenue sur Menfou&nbsp;!
       catchline: Réseau social de type osef-tier
       caption: Exprime des trucs qui n'intéressent personne.<br> Comme un vrai réseau quoi.
-      count: Il y a  actuellement %{count} postés dont personne n'a rien à cirer.
+      count: Il y a  actuellement <span class="text-primary">%{count}</span> postés dont personne n'a rien à cirer.
       join_us: Rejoins-nous, mais en vrai on s'en fout.
       leave_us: Retourne voir des trucs intéressants
 
@@ -68,15 +69,13 @@ fr:
       destroy: Supprimer ce truc
     placeholder:
       title: Rien à battre 🙄
-      caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <b>@pedraal</b>, notre CEO, mais en vrai on s'en fout pas mal.
+      caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <span class="font-semibold title-gradient">@pedraal</span>, notre CEO, mais en vrai on s'en fout pas mal.
 
   users:
     search:
       title: Menfoutistes
       empty: Aucun menfoutistes trouvés... Mais en vrai... On s'en fout nan ?
     show:
-      edit: Modifier mon compte
-      delete: Supprimer mon compte
       posts:
         mine: Mes trucs
         others: Trucs de %{handle}
@@ -87,7 +86,8 @@ fr:
       title: La bienvenue à toi jeune menfoutiste
     edit:
       title: Modifier mon compte
-      show: Annuler
+      show: ❌
+      delete: 🗑️
     create:
       success: Compte créé !
     update:
@@ -98,3 +98,8 @@ fr:
       success: Tu suis maintenant %{handle}
     unfollow:
       success: Tu ne suis plus %{handle}
+    user:
+      stats:
+        posts_count: Trucs
+        followers_count: Abonnés
+        followees_count: Abonnements
