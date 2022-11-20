@@ -15,7 +15,7 @@ input, textarea, select {
 
 @layer utilities {
   .title-gradient {
-    @apply bg-gradient-to-r from-green-300 to-primary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-green-400 to-primary bg-clip-text text-transparent;
   }
 
   .emoji-black {
@@ -34,5 +34,8 @@ input, textarea, select {
 
   .btn-secondary {
     @apply btn-base bg-gray-100 text-black;
+  }
+  .btn-secondary span {
+    @apply text-black;
   }
 }
