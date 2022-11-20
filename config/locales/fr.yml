@@ -48,9 +48,6 @@ fr:
     index:
       title: TrucsFeed
       new: 🖊️
-      placeholder:
-        title: Rien à battre 🙄
-        caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <b>@pedraal</b>, notre CEO, mais en vrai on s'en fout pas mal.
     show:
       edit: 🖊️
       delete: 🗑️
@@ -69,6 +66,9 @@ fr:
     actions:
       edit: Modifier ce truc
       destroy: Supprimer ce truc
+    placeholder:
+      title: Rien à battre 🙄
+      caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <b>@pedraal</b>, notre CEO, mais en vrai on s'en fout pas mal.
 
   users:
     search:
