@@ -1,0 +1,29 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 3000
+    restart: always
+    command: [ "rails", "server", "-b", "0.0.0.0" ]
+    networks:
+      - proxy
+      - datastore-network
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.menfou-service.loadbalancer.server.port=3000
+      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie=true
+      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.name=io
+      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.httponly=true
+      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.secure=true
+      - traefik.http.services.menfou-service.loadbalancer.sticky.cookie.samesite=io
+      - traefik.http.routers.menfou.rule=Host(`menfou.pedraal.fr`)
+      - traefik.http.routers.menfou.entrypoints=web
+      - traefik.http.routers.menfou-secured.tls=true
+      - traefik.http.routers.menfou-secured.rule=Host(`menfou.pedraal.fr`)
+
+networks:
+  proxy:
+    external: true
+  datastore-network:
+    external: true
