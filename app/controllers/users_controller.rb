@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   # GET /users/search
   def search
-    @users = User.where("fuzzy_handle LIKE '%#{params[:q]}%'")
+    @users = User.where("fuzzy_handle LIKE '%#{User.cleanHandle(params[:q])}%'")
   end
 
   # GET /users/1
