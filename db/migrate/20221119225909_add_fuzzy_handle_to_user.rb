@@ -4,7 +4,7 @@ class AddFuzzyHandleToUser < ActiveRecord::Migration[7.0]
 
     up_only do
       User.find_each do |user|
-        user.update!(fuzzy_handle: TextCleanerService.clean(user.handle))
+        user.update!(fuzzy_handle: User.cleanHandle(user.handle))
       end
     end
   end
