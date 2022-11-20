@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def user_handle(user)
     "@#{user.handle}"
@@ -8,6 +10,6 @@ module UsersHelper
   end
 
   def user_avatar_tag(user)
-    tag.img src: user_avatar(user), alt: "Avatar de #{user.handle}", class: "avatar", class: 'aspect-square w-10 inline'
+    tag.img src: user_avatar(user), alt: "Avatar de #{user.handle}", class: 'avatar', class: 'aspect-square w-10 inline'
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: posts
@@ -17,7 +19,7 @@
 #  user_id  (user_id => users.id)
 #
 class Post < ApplicationRecord
-  validates :user_id, :body, presence: true
+  validates :body, presence: true
   validates :body, length: { maximum: 280 }
 
   belongs_to :user, counter_cache: true
@@ -47,8 +49,8 @@ class Post < ApplicationRecord
   def broadcastables
     broadcastables = []
     broadcastables << "#{ActionView::RecordIdentifier.dom_id(user)}-posts"
-      broadcastables << "posts-for-#{ActionView::RecordIdentifier.dom_id(user)}"
-      user.followers.each do |follower|
+    broadcastables << "posts-for-#{ActionView::RecordIdentifier.dom_id(user)}"
+    user.followers.each do |follower|
       broadcastables << "posts-for-#{ActionView::RecordIdentifier.dom_id(follower)}"
     end
 

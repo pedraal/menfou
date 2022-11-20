@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   include Secured
 
-  before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authorize, only: %i[ edit update destroy ]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :authorize, only: %i[edit update destroy]
 
   # GET /posts
   def index
@@ -30,7 +32,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: t('.success') }
-        format.turbo_stream { render turbo_stream: turbo_stream.remove("new-post-modal") }
+        format.turbo_stream { render turbo_stream: turbo_stream.remove('new-post-modal') }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.turbo_stream { render :new, status: :unprocessable_entity }
@@ -43,7 +45,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to post_url(@post), notice: t('.success') }
-        format.turbo_stream { render turbo_stream: turbo_stream.remove("edit-post-modal") }
+        format.turbo_stream { render turbo_stream: turbo_stream.remove('edit-post-modal') }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.turbo_stream { render :edit, status: :unprocessable_entity }
@@ -61,20 +63,21 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+private
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def authorize
-      return if @post.user == current_user
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:body)
+  end
 
-      redirect_back fallback_location: root_path
-    end
+  def authorize
+    return if @post.user == current_user
+
+    redirect_back fallback_location: root_path
+  end
 end

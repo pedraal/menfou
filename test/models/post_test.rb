@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: posts
@@ -16,7 +18,7 @@
 #
 #  user_id  (user_id => users.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   # test "the truth" do

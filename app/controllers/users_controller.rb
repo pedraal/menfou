@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   include Secured
 
-  before_action :set_user, only: %i[ edit update destroy follow unfollow ]
-  before_action :redirect_if_exists, only: %i[ new create ]
-  before_action :authorize, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[edit update destroy follow unfollow]
+  before_action :redirect_if_exists, only: %i[new create]
+  before_action :authorize, only: %i[edit update destroy]
 
   # GET /users/search
   def search
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: t(".success") }
+        format.html { redirect_to user_url(@user), notice: t('.success') }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -75,24 +77,25 @@ class UsersController < ApplicationController
     redirect_to user_url(@user), notice: t('.success', handle: @user.handle)
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+private
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:handle)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def redirect_if_exists
-      redirect_to user_url(current_user) if current_user
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:handle)
+  end
 
-    def authorize
-      return if @user == current_user
+  def redirect_if_exists
+    redirect_to user_url(current_user) if current_user
+  end
 
-      redirect_back fallback_location: root_path
-    end
+  def authorize
+    return if @user == current_user
+
+    redirect_back fallback_location: root_path
+  end
 end

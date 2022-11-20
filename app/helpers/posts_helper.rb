@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PostsHelper
   def relative_post_timestamp(post)
     created_at_from_now = Time.current - post.created_at

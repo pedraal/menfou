@@ -6,4 +6,5 @@
     "html": "html",
     "erb": "html",
   },
+  "solargraph.formatting": true
 }

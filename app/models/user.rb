@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -46,11 +48,11 @@ class User < ApplicationRecord
       end
     end
     str = str.gsub(/[^a-zA-Z0-9. ]/, '')
-    str = str.gsub(/ +/, ' ')
-    str = str.gsub(/ /, '-')
+    str = str.squeeze(' ')
+    str = str.tr(' ', '-')
     str = str.gsub(/[^a-zA-Z0-9. ]/, '')
-    str = str.gsub(/ +/, ' ')
-    str = str.gsub(/ /, '-')
+    str = str.squeeze(' ')
+    str = str.tr(' ', '-')
     str = str.downcase
   end
 end

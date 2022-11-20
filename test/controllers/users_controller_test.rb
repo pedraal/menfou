@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -6,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     login_as @user
   end
 
-  test "should get new" do
+  test 'should get new' do
     new_user = User.new handle: 'new_user'
     login_as new_user
 
@@ -14,34 +16,34 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create user" do
+  test 'should create user' do
     new_user = User.new handle: 'new_user'
     login_as new_user
 
-    assert_difference("User.count") do
+    assert_difference('User.count') do
       post users_url, params: { user: { handle: 'new_user' } }
     end
 
     assert_redirected_to posts_url
   end
 
-  test "should show user" do
+  test 'should show user' do
     get user_url(@user)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_user_url(@user)
     assert_response :success
   end
 
-  test "should update user" do
+  test 'should update user' do
     patch user_url(@user), params: { user: { handle: @user.handle } }
     assert_redirected_to user_url(@user)
   end
 
-  test "should destroy user" do
-    assert_difference("User.count", -1) do
+  test 'should destroy user' do
+    assert_difference('User.count', -1) do
       delete user_url(@user)
     end
 

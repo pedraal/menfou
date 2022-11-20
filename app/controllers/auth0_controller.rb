@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Auth0Controller < ApplicationController
   def callback
     # OmniAuth stores the information returned from Auth0 and the IdP in request.env['omniauth.auth'].
@@ -26,11 +28,11 @@ class Auth0Controller < ApplicationController
     redirect_to logout_url, allow_other_host: true, notice: t('.success')
   end
 
-  private
+private
 
   def logout_url
     request_params = {
-      returnTo: root_url,
+      returnTo:  root_url,
       client_id: AUTH0_CONFIG['auth0_client_id']
     }
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
   resources :posts
@@ -12,5 +14,4 @@ Rails.application.routes.draw do
   get '/auth/logout' => 'auth0#logout'
 
   get '/dashboard' => 'dashboard#show'
-
 end

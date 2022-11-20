@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action :load_auth_info
 
@@ -11,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  private
+private
 
   def load_auth_info
     # session[:userinfo] was saved earlier on Auth0Controller#callback
