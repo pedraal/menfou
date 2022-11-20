@@ -18,7 +18,7 @@
 #
 class Post < ApplicationRecord
   validates :user_id, :body, presence: true
-  validates :body, length: { maximum: 140 }
+  validates :body, length: { maximum: 280 }
 
   belongs_to :user
 
