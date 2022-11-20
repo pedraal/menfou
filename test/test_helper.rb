@@ -16,7 +16,10 @@ class ActiveSupport::TestCase
     OmniAuth.config.mock_auth[:auth0] = nil
     OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({
       extra: {
-        raw_info: user.auth0_data
+        raw_info: {
+          sub: user.handle,
+          nickname: user.handle,
+        }
       }
     })
 

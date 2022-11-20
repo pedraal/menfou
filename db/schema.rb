@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_19_233638) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_163409) do
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followee_id", null: false
@@ -31,7 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_233638) do
 
   create_table "users", force: :cascade do |t|
     t.string "auth0_id"
-    t.json "auth0_data"
     t.string "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -27,9 +27,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params.merge(
-      auth0_id: session[:userinfo]['sub'],
-      auth0_data: session[:userinfo]))
+    @user = User.new(user_params.merge(auth0_id: session[:userinfo]['sub']))
 
     respond_to do |format|
       if @user.save

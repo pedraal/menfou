@@ -7,7 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    new_user = User.new auth0_data: { sub: '1234', nickname: 'new_user' }
+    new_user = User.new handle: 'new_user'
     login_as new_user
 
     get new_user_url
@@ -15,7 +15,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user" do
-    new_user = User.new auth0_data: { sub: '1234', nickname: 'new_user' }
+    new_user = User.new handle: 'new_user'
     login_as new_user
 
     assert_difference("User.count") do

@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id           :integer          not null, primary key
-#  auth0_data   :json
 #  fuzzy_handle :string
 #  handle       :string
 #  created_at   :datetime         not null
