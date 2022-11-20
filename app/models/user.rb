@@ -20,10 +20,10 @@ class User < ApplicationRecord
   has_many :followers, through: :inverse_follows, source: :follower
 
 
-  before_validation :set_fuzzy_handle
+  before_save :set_fuzzy_handle
 
   def set_fuzzy_handle
-    fuzzy_handle = User.cleanHandle(handle)
+    self[:fuzzy_handle] = User.cleanHandle(handle)
   end
 
   def self.cleanHandle(str)
