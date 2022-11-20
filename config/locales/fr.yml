@@ -1,7 +1,6 @@
 fr:
   navbar:
     title: Menfou 🤷
-    catchline: Réseau social de type osef-tier
     actions:
       login: Se connecter
       logout: Se déconnecter
@@ -40,6 +39,7 @@ fr:
   home:
     index:
       welcome: Bienvenue sur Menfou&nbsp;!
+      catchline: Réseau social de type osef-tier
       caption: Exprimes des trucs qui n'intéressent personne, on ne manquera pas de te le dire.<br> Comme un vrai réseau quoi.
       count: Il y a  actuellement %{count} dont personne n'a rien à cirer.
       join_us: Rejoins-nous, mais en vrai on s'en fout.
@@ -48,7 +48,7 @@ fr:
   posts:
     index:
       title: TrucsFeed
-      new: 🖊️ Écris un truc
+      new: 🖊️
     show:
       edit: 🖊️
       delete: 🗑️
@@ -69,13 +69,18 @@ fr:
       destroy: Supprimer ce truc
 
   users:
+    search:
+      title: Menfoutistes
+      empty: Aucun menfoutistes trouvés... Mais en vrai... On s'en fout nan ?
     show:
       edit: Modifier mon compte
       delete: Supprimer mon compte
       posts:
         mine: Mes trucs
         others: Trucs de %{handle}
-      new_post: 🖊️ Écris un truc
+      new_post: 🖊️
+      follow: 🤝
+      unfollow: ✋
     new:
       title: La bienvenue à toi jeune menfoutiste
     edit:
@@ -87,3 +92,7 @@ fr:
       success: Compte mis à jour !
     destroy:
       success: Compte supprimé !
+    follow:
+      success: Tu suis maintenant %{handle}
+    unfollow:
+      success: Tu ne suis plus %{handle}

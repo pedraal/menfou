@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_19_175535) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_19_233638) do
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_follows_on_followee_id"
+    t.index ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "body", null: false
     t.datetime "created_at", null: false
@@ -25,7 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_19_175535) do
     t.string "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fuzzy_handle"
   end
 
+  add_foreign_key "follows", "users", column: "followee_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "posts", "users"
 end

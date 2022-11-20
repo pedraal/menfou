@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   include Secured
 
-  before_action :set_user, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[ edit update destroy follow unfollow ]
   before_action :redirect_if_exists, only: %i[ new create ]
   before_action :authorize, only: %i[ edit update destroy ]
+
+  # GET /users/search
+  def search
+    @users = User.where("fuzzy_handle LIKE '%#{params[:q]}%'")
+  end
 
   # GET /users/1
   def show
     @user = User.includes(:posts).find(params[:id])
+    @follow = Follow.find_by(follower: current_user, followee: @user)
   end
 
   # GET /users/new
@@ -54,6 +60,21 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_url, notice: t('.success') }
     end
+  end
+
+  # PATCH/PUT /users/1
+  def follow
+    Follow.create!(follower: current_user, followee: @user)
+
+    redirect_to user_url(@user), notice: t('.success', handle: @user.handle)
+  end
+
+  # PATCH/PUT /users/1
+  def unfollow
+    follow = Follow.find_by!(follower: current_user, followee: @user)
+    follow.destroy!
+
+    redirect_to user_url(@user), notice: t('.success', handle: @user.handle)
   end
 
   private

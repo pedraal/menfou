@@ -45,6 +45,13 @@ class Post < ApplicationRecord
   end
 
   def broadcastables
-    ['posts', "#{ActionView::RecordIdentifier.dom_id(user)}-posts"]
+    broadcastables = []
+    broadcastables << "#{ActionView::RecordIdentifier.dom_id(user)}-posts"
+      broadcastables << "posts-for-#{ActionView::RecordIdentifier.dom_id(user)}"
+      user.followers.each do |follower|
+      broadcastables << "posts-for-#{ActionView::RecordIdentifier.dom_id(follower)}"
+    end
+
+    broadcastables
   end
 end

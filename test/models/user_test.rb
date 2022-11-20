@@ -2,12 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  auth0_data :json
-#  handle     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  auth0_id   :string
+#  id           :integer          not null, primary key
+#  auth0_data   :json
+#  fuzzy_handle :string
+#  handle       :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  auth0_id     :string
 #
 require "test_helper"
 

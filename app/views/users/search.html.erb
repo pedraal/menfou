@@ -1,0 +1,22 @@
+<div class="w-full">
+  <div class="flex flex-col md:flex-row gap-4 justify-between items-center mb-6">
+    <h3 class="font-bold text-4xl"><%= t('.title') %></h1>
+    <div class="flex items-center gap-2">
+      <div class="max-w-lg min-w-[150px]">
+        <%= render ::UserSearchBarComponent.new %>
+      </div>
+    </div>
+  </div>
+  <%- if @users.any? %>
+    <div class="flex flex-wrap">
+      <%- @users.each do |user| %>
+        <%= link_to user_path(user), class: "border border-gray-300 hover:bg-gray-100/5 py-3 px-5 flex items-center rounded-lg gap-3 mx-2" do %>
+          <%= user_avatar_tag(user) %>
+          <%= user_handle(user) %>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p><%= t('.empty') %></p>
+  <% end %>
+</div>

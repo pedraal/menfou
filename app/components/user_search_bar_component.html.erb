@@ -1,0 +1,9 @@
+<form
+  class="w-full dark:bg-slate-800 relative shadow rounded-md border border-gray-200 flex items-center"
+  data-controller="user-search-bar"
+  data-action="submit->user-search-bar#search:prevent"
+  data-user-search-bar-search-url-value="<%= search_users_path %>"
+  >
+  <input type="text" class="grow bg-transparent border-transparent focus:border-transparent focus:ring-0" placeholder="Cherche des gens" data-user-search-bar-target="query" value="<%= params[:q] %>">
+  <span class="m-2 cursor-pointer" data-action="click->user-search-bar#search:prevent">🔎</span>
+</form>

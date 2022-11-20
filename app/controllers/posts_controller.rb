@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.order(id: :desc).all
+    followees = current_user.followees
+    @posts = Post.where(user: followees).or(Post.where(user: current_user)).order(id: :desc).all
   end
 
   # GET /posts/1

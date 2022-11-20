@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources :posts
-  resources :users
+  resources :users do
+    get :search, on: :collection
+    put :follow, on: :member
+    put :unfollow, on: :member
+  end
 
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
