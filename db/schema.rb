@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_20_163409) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_20_173125) do
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followee_id", null: false
@@ -35,6 +35,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_20_163409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fuzzy_handle"
+    t.integer "posts_count", default: 0
+    t.integer "followers_count", default: 0
+    t.integer "followees_count", default: 0
   end
 
   add_foreign_key "follows", "users", column: "followee_id"

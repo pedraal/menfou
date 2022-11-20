@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   validates :user_id, :body, presence: true
   validates :body, length: { maximum: 280 }
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   after_create_commit { broadcast_prepend }
   after_update_commit { broadcast_replace }

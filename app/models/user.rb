@@ -2,21 +2,22 @@
 #
 # Table name: users
 #
-#  id           :integer          not null, primary key
-#  fuzzy_handle :string
-#  handle       :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  auth0_id     :string
+#  id              :integer          not null, primary key
+#  followees_count :integer          default(0)
+#  followers_count :integer          default(0)
+#  fuzzy_handle    :string
+#  handle          :string
+#  posts_count     :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  auth0_id        :string
 #
 class User < ApplicationRecord
   validates :handle, presence: true, uniqueness: true, length: { maximum: 25 }
 
   has_many :posts, dependent: :destroy
-  has_many :follows, foreign_key: :follower_id, dependent: :destroy
-  has_many :followees, through: :follows, source: :followee
-  has_many :inverse_follows, foreign_key: :followee_id, class_name: 'Follow', dependent: :destroy
-  has_many :followers, through: :inverse_follows, source: :follower
+  has_many :followers, foreign_key: :followee_id, class_name: 'Follow', dependent: :destroy
+  has_many :followees, foreign_key: :follower_id, class_name: 'Follow', dependent: :destroy
 
   before_save :set_fuzzy_handle
 
@@ -26,30 +27,30 @@ class User < ApplicationRecord
 
   def self.cleanHandle(str)
     accents = {
-      ['á','à','â','ä','ã'] => 'a',
-      ['Ã','Ä','Â','À'] => 'A',
-      ['é','è','ê','ë'] => 'e',
-      ['Ë','É','È','Ê'] => 'E',
-      ['í','ì','î','ï'] => 'i',
-      ['Î','Ì'] => 'I',
-      ['ó','ò','ô','ö','õ'] => 'o',
-      ['Õ','Ö','Ô','Ò','Ó'] => 'O',
-      ['ú','ù','û','ü'] => 'u',
-      ['Ú','Û','Ù','Ü'] => 'U',
+      %w[á à â ä ã] => 'a',
+      %w[Ã Ä Â À] => 'A',
+      %w[é è ê ë] => 'e',
+      %w[Ë É È Ê] => 'E',
+      %w[í ì î ï] => 'i',
+      %w[Î Ì] => 'I',
+      %w[ó ò ô ö õ] => 'o',
+      %w[Õ Ö Ô Ò Ó] => 'O',
+      %w[ú ù û ü] => 'u',
+      %w[Ú Û Ù Ü] => 'U',
       ['ç'] => 'c', ['Ç'] => 'C',
       ['ñ'] => 'n', ['Ñ'] => 'N'
     }
-    accents.each do |ac,rep|
+    accents.each do |ac, rep|
       ac.each do |s|
         str = str.gsub(s, rep)
       end
     end
-    str = str.gsub(/[^a-zA-Z0-9\. ]/,"")
-    str = str.gsub(/[ ]+/," ")
-    str = str.gsub(/ /,"-")
-    str = str.gsub(/[^a-zA-Z0-9\. ]/,"")
-    str = str.gsub(/[ ]+/," ")
-    str = str.gsub(/ /,"-")
+    str = str.gsub(/[^a-zA-Z0-9. ]/, '')
+    str = str.gsub(/ +/, ' ')
+    str = str.gsub(/ /, '-')
+    str = str.gsub(/[^a-zA-Z0-9. ]/, '')
+    str = str.gsub(/ +/, ' ')
+    str = str.gsub(/ /, '-')
     str = str.downcase
   end
 end
