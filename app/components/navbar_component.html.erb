@@ -2,7 +2,7 @@
   <%= link_to root_url do %>
     <h1 class="text-2xl lg:text-[40px] font-bold"><%= t('navbar.title') %></h1>
   <% end %>
-  <%- if helpers.user_signed_in? %>
+  <%- if helpers.current_user %>
     <%= render Ui::MenuComponent.new do |m| %>
       <%- m.toggler do %>
         <span class="flex items-center">

@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     login_as new_user
 
     assert_difference("User.count") do
-      post users_url, params: { user: { handle: @user.handle } }
+      post users_url, params: { user: { handle: 'new_user' } }
     end
 
     assert_redirected_to posts_url
