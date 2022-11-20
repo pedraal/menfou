@@ -1,0 +1,5 @@
+<%- if follow %>
+  <%= link_to t('users.actions.unfollow').html_safe, unfollow_user_path(user), data: { 'turbo-method': :put }, class: 'btn-secondary' %>
+<% else %>
+  <%= link_to t('users.actions.follow').html_safe, follow_user_path(user), data: { 'turbo-method': :put }, class: 'btn-primary' %>
+<% end %>

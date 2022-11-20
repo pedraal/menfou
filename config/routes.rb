@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get :search, on: :collection
     put :follow, on: :member
     put :unfollow, on: :member
+    get :followers, on: :member
+    get :followees, on: :member
   end
 
   get '/auth/auth0/callback' => 'auth0#callback'

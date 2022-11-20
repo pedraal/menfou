@@ -1,0 +1,8 @@
+<div class="flex flex-wrap">
+  <%- users.each do |user| %>
+    <%= link_to user_path(user), class: "border border-gray-300 hover:bg-gray-100/5 py-3 px-5 flex items-center rounded-lg gap-3 mx-2" do %>
+      <%= user_avatar_tag(user) %>
+      <%= user_handle(user) %>
+    <% end %>
+  <% end %>
+</div>

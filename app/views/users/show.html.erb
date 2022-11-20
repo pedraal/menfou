@@ -1,21 +1,11 @@
 <div class="w-full">
-  <%- if @user == current_user %>
-    <%= link_to t('.edit'), edit_user_path(@user), class: "btn-secondary" %>
-    <div class="inline-block ml-2">
-      <%= button_to t('.delete'), user_path(@user), method: :delete, class: "btn-secondary" %>
-    </div>
-  <% end %>
   <%= render @user %>
-  <div class="flex justify-between items-center">
-    <h3 class="font-bold text-4xl"><%= t(".posts.#{ current_user == @user ? 'mine' : 'others' }", handle: @user.handle) %></h1>
+  <div class="flex justify-between items-center mt-4">
+    <h3 class="font-semibold sm:font-bold text-2xl sm:text-4xl"><%= t(".title.#{ current_user == @user ? 'mine' : 'others' }") %></h1>
     <%- if @user == current_user %>
-      <%= link_to t('.new_post'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
+      <%= link_to t('users.actions.new_post').html_safe, nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
     <% else %>
-      <%- if @follow %>
-        <%= link_to t('.unfollow'), unfollow_user_path(@user), data: { 'turbo-method': :put }, class: 'btn-secondary' %>
-      <% else %>
-        <%= link_to t('.follow'), follow_user_path(@user), data: { 'turbo-method': :put }, class: 'btn-primary' %>
-      <% end %>
+      <%= render 'follow_actions', follow: @follow, user: @user%>
     <% end %>
   </div>
   <div class="min-w-full py-6">

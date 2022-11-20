@@ -72,16 +72,25 @@ fr:
       caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <span class="font-semibold title-gradient">@pedraal</span>, notre CEO, mais en vrai on s'en fout pas mal.
 
   users:
+    actions:
+      new_post: 🖊️ <span class="hidden sm:inline">Écrire un truc</span>
+      follow: 🤝 <span class="hidden sm:inline">S'abonner</span>
+      unfollow: ✋ <span class="hidden sm:inline">Se désabonner</span>
     search:
       title: Menfoutistes
       empty: Aucun menfoutistes trouvés... Mais en vrai... On s'en fout nan ?
     show:
-      posts:
+      title:
         mine: Mes trucs
-        others: Trucs de %{handle}
-      new_post: 🖊️
-      follow: 🤝
-      unfollow: ✋
+        others: Trucs
+    followers:
+      title:
+        mine: Mes abonné(e)s
+        others: Abonné(e)s
+    followees:
+      title:
+        mine: Mes abonnements
+        others: Abonnements
     new:
       title: La bienvenue à toi jeune menfoutiste
     edit:

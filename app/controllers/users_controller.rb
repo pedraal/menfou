@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     @follow = Follow.find_by(follower: current_user, followee: @user)
   end
 
+  # GET /users/1/followers
+  def followers
+    @user = User.includes(followers: :follower).find(params[:id])
+    @follow = Follow.find_by(follower: current_user, followee: @user)
+  end
+
+  # GET /users/1/followees
+  def followees
+    @user = User.includes(followees: :followee).find(params[:id])
+    @follow = Follow.find_by(follower: current_user, followee: @user)
+  end
+
   # GET /users/new
   def new
     @user = User.new(handle: session[:userinfo]['nickname'])
@@ -66,7 +78,7 @@ class UsersController < ApplicationController
   def follow
     Follow.create!(follower: current_user, followee: @user)
 
-    redirect_to user_url(@user), notice: t('.success', handle: @user.handle)
+    redirect_back fallback_location: user_url(@user), notice: t('.success', handle: @user.handle)
   end
 
   # PATCH/PUT /users/1
@@ -74,7 +86,7 @@ class UsersController < ApplicationController
     follow = Follow.find_by!(follower: current_user, followee: @user)
     follow.destroy!
 
-    redirect_to user_url(@user), notice: t('.success', handle: @user.handle)
+    redirect_back fallback_location: user_url(@user), notice: t('.success', handle: @user.handle)
   end
 
 private

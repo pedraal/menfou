@@ -1,13 +1,21 @@
-<div id="<%= dom_id user %>">
+<div id="<%= dom_id(user) %>">
   <p class="my-5 flex items-center gap-4">
-    <%= user_big_avatar_tag(user) %>
-    <span class="text-[40px]">
+    <span class="hidden sm:block">
+      <%= user_big_avatar_tag(user) %>
+    </span>
+    <span class="sm:hidden">
+      <%= user_avatar_tag(user) %>
+    </span>
+    <span class="text-3xl sm:text-[40px]">
       <%= user_handle(user) %>
     </span>
   </p>
-  <% if action_name != "show" %>
-    <%= link_to t('.show'), user, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to_if user == current_user, t('.edit'), edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 mb-4">
+    <%- { posts_count: user_path(user), followers_count: followers_user_path(user), followees_count: followees_user_path(user) }.each do |stat, link| %>
+      <%= link_to link, class: "flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-800/30 rounded-lg p-1 sm:p-4 lg:p-8" do %>
+        <div class="text-primary text-xl sm:text-2xl md:text-3xl font-bold"><%= user.send(stat) %></div>
+        <div class="text-sm sm:text-base font-semibold"><%= t(".stats.#{stat}") %></div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
