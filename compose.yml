@@ -4,11 +4,15 @@ services:
       context: .
     ports:
       - 3000
+    environment:
+      - REDIS_URL="redis://redis:6379"
     restart: always
     command: [ "rails", "server", "-b", "0.0.0.0" ]
     networks:
       - proxy
       - datastore-network
+    volumes:
+      - ./db:/usr/src/app/db
     labels:
       - traefik.enable=true
       - traefik.http.services.menfou-service.loadbalancer.server.port=3000

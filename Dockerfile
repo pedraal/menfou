@@ -17,7 +17,6 @@ RUN bundle lock --add-platform x86_64-linux
 RUN bundle install
 
 COPY . /usr/src/app
-RUN bin/setup
 RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
