@@ -23,7 +23,12 @@ class User < ApplicationRecord
   has_many :followees, foreign_key: :follower_id, class_name: 'Follow', dependent: :destroy
   has_many :followee_users, through: :followees, source: :followee
 
+  before_save :clean_handle
   before_save :set_fuzzy_handle
+
+  def clean_handle
+    self[:handle] = handle.gsub(/\s+/, '_')
+  end
 
   def set_fuzzy_handle
     self[:fuzzy_handle] = User.cleanHandle(handle)
