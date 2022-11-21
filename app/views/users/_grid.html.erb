@@ -1,6 +1,6 @@
-<div class="flex flex-wrap">
+<div class="flex flex-wrap gap-3">
   <%- users.each do |user| %>
-    <%= link_to user_path(user), class: "border border-gray-300 hover:bg-gray-100/5 py-3 px-5 flex items-center rounded-lg gap-3 mx-2" do %>
+    <%= link_to user_path(user), class: "border border-gray-300 hover:bg-gray-100/5 py-3 px-5 flex items-center rounded-lg gap-3" do %>
       <%= user_avatar_tag(user) %>
       <%= user_handle(user) %>
     <% end %>

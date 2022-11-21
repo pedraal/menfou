@@ -2,11 +2,11 @@
 
 module UsersHelper
   def user_handle(user)
-    tag.span(tag.span('@', class: 'text-primary') + user.handle)
+    "@#{user.handle}"
   end
 
   def user_avatar(user)
-    "https://source.boringavatars.com/beam/120/#{ERB::Util.url_encode user.handle}?colors=264653,2a9d8f,e9c46a,f4a261,e76f51"
+    "https://source.boringavatars.com/beam/120/#{ERB::Util.url_encode(user.handle)}?colors=264653,2a9d8f,e9c46a,f4a261,e76f51"
   end
 
   def user_avatar_tag(user)
