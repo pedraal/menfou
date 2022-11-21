@@ -7,6 +7,6 @@
     <% end %>
   </div>
   <div class="min-w-full py-6">
-    <%= render 'grid', users: @user.followees.map(&:followee) %>
+    <%= render 'grid', users: @user.followee_users %>
   </div>
 </div>

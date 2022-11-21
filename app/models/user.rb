@@ -19,7 +19,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :followers, foreign_key: :followee_id, class_name: 'Follow', dependent: :destroy
+  has_many :follower_users, through: :followers, source: :follower
   has_many :followees, foreign_key: :follower_id, class_name: 'Follow', dependent: :destroy
+  has_many :followee_users, through: :followees, source: :followee
 
   before_save :set_fuzzy_handle
 
