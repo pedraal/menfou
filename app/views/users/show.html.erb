@@ -10,7 +10,7 @@
   </div>
   <div class="min-w-full py-6">
     <%= turbo_stream_from "#{dom_id(@user)}-posts" %>
-    <%= turbo_frame_tag "posts" do %>
+    <%= turbo_frame_tag "posts", class: "grid grid-cols-2 gap-3" do %>
       <%- @posts.order(id: :desc).each do |post| %>
         <%= render post %>
       <% end %>

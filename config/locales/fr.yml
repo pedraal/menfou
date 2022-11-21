@@ -52,6 +52,9 @@ fr:
     index:
       title: TrucsFeed
       new: 🖊️
+      tops: Tops
+      top_posters: Truqueurs
+      top_followees: Follows
     show:
       edit: 🖊️
       delete: 🗑️

@@ -1,22 +1,37 @@
-<div class="w-full">
-  <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
-    <h3 class="font-bold text-4xl"><%= t('.title') %></h1>
-    <div class="flex items-center gap-2">
-      <div class="max-w-lg min-w-[150px]">
-        <%= render ::UserSearchBarComponent.new %>
+<div class="w-full xl:flex gap-3">
+  <div class="xl:w-3/4">
+    <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+      <h3 class="font-bold text-4xl"><%= t('.title') %></h1>
+      <div class="flex items-center gap-2">
+        <div class="max-w-lg min-w-[150px]">
+          <%= render ::UserSearchBarComponent.new %>
+        </div>
+        <%= link_to t('.new'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
       </div>
-      <%= link_to t('.new'), nil, class: 'btn-primary', data: { controller: 'new-post', 'new-post-url-value': new_post_path, action: 'new-post#fetchModal' } %>
+    </div>
+    <%= turbo_stream_from "posts-for-#{dom_id(current_user)}"%>
+    <div id="posts" class="min-w-full py-6">
+      <%= turbo_frame_tag "posts" do %>
+        <%- if @posts.any? %>
+          <%= render @posts %>
+        <%- else %>
+          <% render 'placeholder' %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render 'shared/load_more', records: @posts %>
+  </div>
+  <div class="xl:w-1/4 text-center">
+    <h3 class="font-bold text-4xl py-1"><%= t('.tops') %></h1>
+    <div class="sm:flex xl:block xl:sticky top-5 xl:py-6">
+      <section class="mb-5">
+        <h4 class="font-bold text-2xl mb-3"><%= t('.top_posters') %></h4>
+        <%= render 'users/grid', users: @top_posters %>
+      </section>
+      <section class="mb-5">
+        <h4 class="font-bold text-2xl mb-3"><%= t('.top_followees') %></h4>
+        <%= render 'users/grid', users: @top_followees %>
+      </section>
     </div>
   </div>
-  <%= turbo_stream_from "posts-for-#{dom_id(current_user)}"%>
-  <div id="posts" class="min-w-full py-6">
-    <%= turbo_frame_tag "posts" do %>
-      <%- if @posts.any? %>
-        <%= render @posts %>
-      <%- else %>
-        <% render 'placeholder' %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= render 'shared/load_more', records: @posts %>
 </div>
