@@ -1,4 +1,7 @@
 fr:
+  app:
+    load_more: "Voir plus"
+
   navbar:
     title: <span class="title-gradient">Menfou</span> 🤷
     actions:

@@ -1,0 +1,7 @@
+<%- if records.next_page %>
+  <%= turbo_frame_tag "load-more" do %>
+    <div class="text-center mb-12">
+      <a class="btn-primary" data-controller="load-more" data-action="load-more#fetch" data-load-more-url-value="<%= local_assigns[:url] || url_for(records.first.class) %>"><%= t('app.load_more') %></a>
+    </div>
+  <% end %>
+<% end %>

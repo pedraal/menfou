@@ -1,4 +1,4 @@
-<%= form_with(model: user, class: "contents") do |form| %>
+<%= form_with(model: user, class: "contents", data: { turbo: false }) do |form| %>
   <div class="my-5">
     <%= render Ui::Form::TextFieldComponent.new(form, :handle) %>
   </div>

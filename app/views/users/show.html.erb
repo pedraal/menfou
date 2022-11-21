@@ -11,9 +11,10 @@
   <div class="min-w-full py-6">
     <%= turbo_stream_from "#{dom_id(@user)}-posts" %>
     <%= turbo_frame_tag "posts" do %>
-      <%- @user.posts.order(id: :desc).each do |post| %>
+      <%- @posts.order(id: :desc).each do |post| %>
         <%= render post %>
       <% end %>
     <% end %>
   </div>
+  <%= render 'shared/load_more', records: @posts, url: url_for(@user) %>
 </div>

@@ -3,16 +3,15 @@
 require 'faker'
 
 users = []
-10.times do
+100.times do
   user = User.create(handle: Faker::Name.name)
   users << user
-  3.times do
+  50.times do
     Post.create(user: user, body: Faker::Lorem.sentence)
   end
 end
 
+first_user = User.first
 users.each do |follower|
-  users.reject { |u| u.id == follower.id }.each do |followee|
-    Follow.create(follower: follower, followee: followee)
-  end
+  Follow.create(follower: follower, followee: first_user)
 end

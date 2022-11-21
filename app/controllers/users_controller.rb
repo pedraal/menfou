@@ -16,18 +16,21 @@ class UsersController < ApplicationController
   def show
     @user = User.includes(:posts).find(params[:id])
     @follow = Follow.find_by(follower: current_user, followee: @user)
+    @posts = @user.posts.order(id: :desc).page(params[:page])
   end
 
   # GET /users/1/followers
   def followers
     @user = User.includes(followers: :follower).find(params[:id])
     @follow = Follow.find_by(follower: current_user, followee: @user)
+    @follower_users = @user.follower_users.order(id: :desc).page(params[:page])
   end
 
   # GET /users/1/followees
   def followees
     @user = User.includes(followees: :followee).find(params[:id])
     @follow = Follow.find_by(follower: current_user, followee: @user)
+    @followee_users = @user.followee_users.order(id: :desc).page(params[:page])
   end
 
   # GET /users/new

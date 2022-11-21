@@ -7,6 +7,9 @@
     <% end %>
   </div>
   <div class="min-w-full py-6">
-    <%= render 'grid', users: @user.follower_users %>
+    <%= turbo_frame_tag "follower_users" do %>
+      <%= render 'grid', users: @follower_users %>
+    <% end %>
   </div>
+  <%= render 'shared/load_more', records: @follower_users, url: followers_user_path(@user) %>
 </div>
