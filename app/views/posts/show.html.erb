@@ -6,4 +6,13 @@
     </div>
   <% end %>
   <%= render @post %>
+  <%= turbo_frame_tag "reply-form" do %>
+    <%= render 'reply_form', post: @reply %>
+  <% end %>
+  <%= turbo_stream_from "#{dom_id(@post)}-replies"%>
+  <div id="replies" class="min-w-full py-6 pl-12">
+    <%= turbo_frame_tag "posts" do %>
+      <%= render @replies %>
+    <% end %>
+  </div>
 </div>

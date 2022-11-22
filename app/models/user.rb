@@ -30,6 +30,10 @@ class User < ApplicationRecord
     self[:handle] = handle.gsub(/\s+/, '_')
   end
 
+  def reset_posts_count!
+    update!(posts_count: posts.not_replies.count)
+  end
+
   def set_fuzzy_handle
     self[:fuzzy_handle] = User.cleanHandle(handle)
   end

@@ -1,4 +1,6 @@
-<%= @form.label @field_name %>
+<%- if @options[:label].nil? || @options[:label] %>
+  <%= @form.label @field_name, (@options[:label] if @options[:label].is_a?(String)) %>
+<% end %>
 <%= input %>
 <%- if @object.errors[@field_name].any? %>
   <% @object.errors[@field_name].each do |error| %>

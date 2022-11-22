@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = User.includes(:posts).find(params[:id])
     @follow = Follow.find_by(follower: current_user, followee: @user)
-    @posts = @user.posts.order(id: :desc).page(params[:page])
+    @posts = @user.posts.not_replies.order(id: :desc).page(params[:page])
   end
 
   # GET /users/1/followers

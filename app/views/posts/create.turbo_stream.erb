@@ -1,0 +1,13 @@
+<%- if @post.parent %>
+  <%- if @post.persisted? %>
+    <%= turbo_stream.replace "reply-form" do %>
+      <%= render 'reply_form', post: Post.new(parent: @post.parent) %>
+    <% end %>
+  <% else %>
+    <%= turbo_stream.replace "reply-form" do %>
+      <%= render 'reply_form', post: @post %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove "new-post-modal" %>
+<% end %>

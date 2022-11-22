@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(post) do %>
-  <%- can_do_public_actions = (controller_name != 'posts' || (controller_name == 'posts' && action_name != 'show')) %>
+  <%- can_do_public_actions = ((controller_name != 'posts' || (controller_name == 'posts' && action_name != 'show'))) && !post.parent %>
   <div
     data-controller="post-actions"
     data-post-actions-edit-url-value="<%= edit_post_path(post) %>"
@@ -9,7 +9,7 @@
     class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_do_public_actions %>"
     >
     <div class="flex items-center justify-between">
-      <div data-action="click->post-actions#showUser:stop">
+      <div class="cursor-pointer" data-action="click->post-actions#showUser:stop">
         <%= user_avatar_tag(post.user) %>
         <span><%= user_handle(post.user) %></span>
       </div>

@@ -1,9 +1,9 @@
 <%= form_with(model: post, class: "contents") do |form| %>
   <%= form.hidden_field :parent_id, value: post.parent_id %>
   <div class="my-5">
-    <%= render Ui::Form::TextAreaComponent.new(form, :body, autofocus: true) %>
+    <%= render Ui::Form::TextAreaComponent.new(form, :body, autofocus: true, label: false, placeholder: t('.placeholder')) %>
   </div>
   <div class="inline">
-    <%= form.submit class: "btn-primary" %>
+    <%= form.submit class: "btn-primary", value: t('.submit') %>
   </div>
 <% end %>
