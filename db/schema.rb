@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_130352) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_22_194442) do
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followee_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_130352) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "parent_id"
+    t.integer "replies_count", default: 0
     t.index ["parent_id"], name: "index_posts_on_parent_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

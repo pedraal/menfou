@@ -4,12 +4,13 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  body       :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  parent_id  :integer
-#  user_id    :integer          not null
+#  id            :integer          not null, primary key
+#  body          :string           not null
+#  replies_count :integer          default(0)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  parent_id     :integer
+#  user_id       :integer          not null
 #
 # Indexes
 #
@@ -26,7 +27,7 @@ class Post < ApplicationRecord
   validates :body, length: { maximum: 280 }
 
   belongs_to :user
-  belongs_to :parent, optional: true, class_name: 'Post'
+  belongs_to :parent, optional: true, class_name: 'Post', counter_cache: :replies_count
   has_many :replies, class_name: 'Post', foreign_key: 'parent_id', dependent: :destroy
 
   after_create_commit do

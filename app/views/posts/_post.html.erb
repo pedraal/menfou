@@ -9,9 +9,9 @@
     class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_do_public_actions %>"
     >
     <div class="flex items-center justify-between">
-      <div class="cursor-pointer" data-action="click->post-actions#showUser:stop">
+      <div class="cursor-pointer group" data-action="click->post-actions#showUser:stop">
         <%= user_avatar_tag(post.user) %>
-        <span><%= user_handle(post.user) %></span>
+        <span class="group-hover:underline"><%= user_handle(post.user) %></span>
       </div>
       <div class="flex items-center">
         <span class="text-gray-500">
@@ -39,5 +39,10 @@
     <p class="mt-5">
       <%= post.body %>
     </p>
+    <div class="flex justify-end w-full px-2 h-6">
+      <%- unless post.replies_count.zero?  %>
+        <span><%= "#{post.replies_count} #{t('.replies')}" %></span>
+      <% end %>
+    </div>
   </div>
 <% end %>

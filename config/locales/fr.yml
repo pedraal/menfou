@@ -76,6 +76,8 @@ fr:
     placeholder:
       title: Rien à battre 🙄
       caption: Si vraiment tu t'ennuis, tu peux toujours aller suivre <span class="font-semibold title-gradient">@pedraal</span>, notre CEO, mais en vrai on s'en fout pas mal.
+    post:
+      replies: 💬
     reply_form:
       placeholder: Réponds à ce truc
       submit: Envoyer
