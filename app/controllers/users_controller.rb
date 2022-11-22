@@ -79,17 +79,26 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def follow
-    Follow.create!(follower: current_user, followee: @user)
+    @follow = Follow.find_or_create_by!(follower: current_user, followee: @user)
 
-    redirect_back fallback_location: user_url(@user), notice: t('.success', handle: @user.handle)
+    respond_to do |format|
+      format.html do
+        redirect_to user_url(@user), notice: t('.success')
+      end
+      format.turbo_stream { render :follow }
+    end
   end
 
   # PATCH/PUT /users/1
   def unfollow
-    follow = Follow.find_by!(follower: current_user, followee: @user)
-    follow.destroy!
+    Follow.find_by!(follower: current_user, followee: @user).destroy!
 
-    redirect_back fallback_location: user_url(@user), notice: t('.success', handle: @user.handle)
+    respond_to do |format|
+      format.html do
+        redirect_to user_url(@user), notice: t('.success')
+      end
+      format.turbo_stream { render :follow }
+    end
   end
 
 private
