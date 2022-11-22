@@ -92,7 +92,7 @@ private
   end
 
   def authorize
-    return if @post.user == current_user && @post.parent.nil?
+    return if @post.user == current_user
 
     redirect_back fallback_location: root_path
   end

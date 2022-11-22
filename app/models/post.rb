@@ -64,7 +64,7 @@ class Post < ApplicationRecord
   def broadcastables
     broadcastables = []
 
-    if parent_id
+    if parent
       broadcastables << "#{ActionView::RecordIdentifier.dom_id(parent)}-replies"
     else
       broadcastables << "#{ActionView::RecordIdentifier.dom_id(user)}-posts"

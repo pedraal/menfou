@@ -1,12 +1,12 @@
 <%= turbo_frame_tag dom_id(post) do %>
-  <%- can_do_public_actions = ((controller_name != 'posts' || (controller_name == 'posts' && action_name != 'show'))) && !post.parent %>
+  <%- can_show = ((controller_name != 'posts' || (controller_name == 'posts' && action_name != 'show' ))) && !post.parent_id %>
   <div
     data-controller="post-actions"
     data-post-actions-edit-url-value="<%= edit_post_path(post) %>"
     data-post-actions-show-url-value="<%= post_path(post) %>"
     data-post-actions-show-user-url-value="<%= user_path(post.user) %>"
-    data-action="<%= 'click->post-actions#show' if can_do_public_actions %>"
-    class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_do_public_actions %>"
+    data-action="<%= 'click->post-actions#show' if can_show %>"
+    class="block border rounded-lg dark:border-gray-300 mb-6 p-4 transition-all relative z-0 <%= 'hover:bg-gray-100/5 cursor-pointer' if can_show %>"
     >
     <div class="flex items-center justify-between">
       <div class="cursor-pointer group" data-action="click->post-actions#showUser:stop">
@@ -21,7 +21,7 @@
             à l'instant
           <% end %>
         </span>
-        <%- if post.user == current_user && can_do_public_actions %>
+        <%- if post.user == current_user %>
           <%= render Ui::MenuComponent.new do |m| %>
             <%- m.toggler do %>
               <div class="rotate-90 scale-[.6]">&bull;&bull;&bull;</div>
@@ -29,7 +29,11 @@
             <%- m.body do %>
               <div class="flex flex-col gap-4">
                 <span class="text-sm text-black" data-action="click->post-actions#edit"><%= t('posts.actions.edit') %></span>
-                <span class="text-sm text-black" data-action="click->post-actions#destroy"><%= t('posts.actions.destroy') %></span>
+                <%- if params[:id] != post.id.to_s  %>
+                  <span class="text-sm text-black" data-action="click->post-actions#destroy"><%= t('posts.actions.destroy') %></span>
+                <% else %>
+                  <%= button_to t('posts.actions.destroy'), post_path(post), class: 'text-sm text-black', method: :delete, data: { turbo: false } %>
+                <% end %>
               </div>
             <% end %>
           <% end %>
