@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(user: current_user.followee_users).or(Post.where(user: current_user)).order(id: :desc).page(params[:page])
     @top_posters = User.order(posts_count: :desc).limit(3)
-    @top_followees = User.order(followees_count: :desc).limit(3)
+    @top_followers = User.order(followers_count: :desc).limit(3)
   end
 
   # GET /posts/1

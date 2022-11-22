@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'users', class: 'flex flex-wrap gap-3 justify-center' do %>
+<%= turbo_frame_tag 'users', class: "flex flex-wrap gap-3" do %>
   <%- users.each do |user| %>
     <%= render 'users/grid_item', user: user %>
   <% end %>

@@ -1,4 +1,4 @@
-<div class="w-full xl:flex gap-3">
+<div class="w-full xl:flex gap-6">
   <div class="xl:w-3/4">
     <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
       <h3 class="font-bold text-4xl"><%= t('.title') %></h1>
@@ -21,7 +21,7 @@
     </div>
     <%= render 'shared/load_more', records: @posts %>
   </div>
-  <div class="xl:w-1/4 text-center">
+  <div class="xl:w-1/4">
     <h3 class="font-bold text-4xl py-1"><%= t('.tops') %></h1>
     <div class="sm:flex xl:block xl:sticky top-5 xl:py-6">
       <section class="mb-5">
@@ -29,8 +29,8 @@
         <%= render 'users/grid', users: @top_posters %>
       </section>
       <section class="mb-5">
-        <h4 class="font-bold text-2xl mb-3"><%= t('.top_followees') %></h4>
-        <%= render 'users/grid', users: @top_followees %>
+        <h4 class="font-bold text-2xl mb-3"><%= t('.top_followers') %></h4>
+        <%= render 'users/grid', users: @top_followers %>
       </section>
     </div>
   </div>
