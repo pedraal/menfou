@@ -15,11 +15,17 @@ services:
       - ./db:/usr/src/app/db
     labels:
       - traefik.enable=true
-      - traefik.http.services.menfou-service.loadbalancer.server.port=3000
-      - traefik.http.routers.menfou.rule=Host(`menfou.pedraal.fr`)
+      - traefik.http.services.menfou.loadbalancer.server.port=3000
+
+      - traefik.http.routers.menfou.service=menfou@docker
+      - traefik.http.routers.menfou.rule=Host(`${MENFOU_DOMAIN}`)
       - traefik.http.routers.menfou.entrypoints=web
+      - traefik.http.routers.menfou.middlewares=redirect-https
+
+      - traefik.http.routers.menfou-secured.service=menfou@docker
+      - traefik.http.routers.menfou-secured.entrypoints=web-secured
       - traefik.http.routers.menfou-secured.tls=true
-      - traefik.http.routers.menfou-secured.rule=Host(`menfou.pedraal.fr`)
+      - traefik.http.routers.menfou-secured.rule=Host(`${MENFOU_DOMAIN}`)
 
 networks:
   proxy:
